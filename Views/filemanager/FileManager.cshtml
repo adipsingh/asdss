@@ -1,0 +1,296 @@
+﻿@using System.Globalization;
+@{
+    ViewBag.Title = "FileManager";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+        background-color: #008d4c;
+        color: white;
+    }
+
+    .dropdown-menu > li > a {
+        color: white;
+    }
+</style>
+
+<link href="~/Content/plugins/fileupload/jquery.fileupload.css" rel="stylesheet" />
+<link href="~/Content/plugins/fileupload/jquery.fileupload-ui.css" rel="stylesheet" />
+<script src="~/Content/plugins/fileupload/jquery.fileupload.js"></script>
+<script src="~/Content/plugins/fileupload/jquery.fileupload-ui.js"></script>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="headertext">File Manager</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row m-t-10">
+                            <div class="col-lg-4">
+                                <form id="frm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; Company Name</label>
+                                        <select class="form-control required" id="ddlcompany" onchange="GetCompany()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; Financial Year</label>
+                                        <select class="form-control required" id="ddlFinancialYear"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Code</label>
+                                        <input type="text" class="form-control required" id="txtFileCode" placeholder="File Code" name="FileCode" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Category</label>
+                                        <select class="form-control required" id="ddlFileCategory" onchange="GetFileSubCategory()"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Sub Category</label>
+                                        <select class="form-control required" id="ddlFileSubCategory"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Title</label>
+                                        <input type="text" class="form-control required" id="txtFileTitle" placeholder="File Title" name="FileTitle" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Upload Date</label>
+                                        <input type="text" class="form-control datetimepicker required" id="txtFileUploadDate" placeholder="Upload Date" name="FileUploadDate" style="width:50%" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; File Date</label>
+                                        <input type="text" class="form-control datetimepicker required" id="txtFileDate" placeholder="File Date" name="FileDate" style="width:50%" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp; Description</label>
+                                        <textarea id="txtDescription" class="form-control" name="Description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="btnSave" class="btn btn-success float-left" type="button">Save</button>
+                                        <button id="btnCancel" class="btn btn-warning float-left" type="button">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6">
+                                <div id="divfiles"></div>
+                                <label style="padding: 10px; background: #808080; display: table;color: #fff;border-radius:5px;">
+                                    Upload Files
+                                    <input type="file" id="btnAddFile" style="display:none" onchange="readURL(this);" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link href="~/Content/css/plugins/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+@*<script src="~/Content/plugins/momentjs/moment.js"></script>*@
+<script src="~/Content/plugins/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js"></script>
+
+<script>
+    $('.datetimepicker').datepicker({
+        dateFormat: "yy-M-dd"
+    });
+
+    var readerArr = [], count = 1;
+    function readURL(input) {
+        var reader = new FileReader();
+
+        if (input.files && input.files[0]) {
+            if (input.files[0].size <= 51039935) {
+                filename = input.files[0].name;
+                reader.onload = function (e) {
+                    $('#divfiles').append('<div id="a' + count + '"><a href="/Upload/' + filename + '">' + filename + '</a>&nbsp;<a href="javascript:deleteFile(\'' + filename + '\',' + count + ');" style="color: red;font-size: 15px;font-weight: bold;display:none;">x</a></div>');
+                    $('#btnAddFile').val('');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+                readerArr.push({ file: reader, filename: filename });
+                count += 1;
+            }
+            else {
+                funToastr(false, "File size should be less than or equal to 50 MB");
+            }
+        }
+    }
+
+    function deleteFile(file, count) {
+
+        var tot = readerArr.length, i = 0, obj = null;
+        for (; i < tot; i++) {
+            if (readerArr[i].filename == file) {
+                obj = readerArr[i];
+                break;
+            }
+        }
+
+        if (obj != null) {
+            readerArr.pop(obj);
+            $('#divfiles').find('#a' + count).remove();
+        }
+    }
+
+    function GetFileCategory() {
+        $.ajax({
+            url: '/filemanager/GetFileCategory',
+            type: 'GET',
+            data: {},
+            success: function (response) {
+                $("#ddlFileCategory").empty();
+                if (response.status == "Success") {
+                    $("#ddlFileCategory").append("<option value=''>Select File Category</option>");
+                    $.each(response.data, function (index, value) {
+                        $("#ddlFileCategory").append("<option value='" + value.catid + "'>" + value.catname + "</option>");
+                    });
+                }
+                else {
+                    funToastr(false, response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+
+    function GetFileSubCategory() {
+        $.ajax({
+            url: '/filemanager/GetFileSubCategory',
+            type: 'GET',
+            data: {
+                catid: $('#ddlFileCategory').val()
+            },
+            success: function (response) {
+                $("#ddlFileSubCategory").empty();
+                if (response.status == "Success") {
+                    $.each(response.data, function (index, value) {
+                        $("#ddlFileSubCategory").append("<option value='" + value.subcatid + "'>" + value.subcatname + "</option>");
+                    });
+                }
+                else {
+                    funToastr(false, response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+
+    function GetCompany() {
+        $.ajax({
+            url: '/filemanager/GetCompany',
+            type: 'GET',
+            data: {
+                compid: $('#ddlcompany').val()
+            },
+            success: function (response) {
+                $("#ddlFinancialYear").empty();
+                if (response.status == "Success") {
+                    $.each(response.data, function (index, value) {
+                        $("#ddlFinancialYear").append("<option value='" + value.compfinid + "'>" + value.finyear + "</option>");
+                    });
+                }
+                else {
+                    funToastr(false, response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+
+    function SaveData() {
+        StartProcess();
+        var dataP = {
+            filecode: $("#txtFileCode").val(),
+            filecatid: $("#ddlFileCategory").val(),
+            filesubcatid: $("#ddlFileSubCategory").val(),
+            filetitle: $("#txtFileTitle").val(),
+            uploadeddate: $("#txtFileUploadDate").val(),
+            filedate: $("#txtFileDate").val(),
+            filedescr: $("#txtDescription").val()
+        };
+
+        $.ajax({
+            url: '/filemanager/SaveFileManager',
+            type: 'POST',
+            data: dataP,
+            success: function (response) {
+                if (response.status == "Success") {
+                    funToastr(true, "Saved successfully");
+                    $("#txtFileCode").val("");
+                    $("#ddlFileCategory").val("");
+                    $("#ddlFileSubCategory").empty();
+                    $("#txtFileTitle").val("");
+                    $("#txtFileUploadDate").val("");
+                    $("#txtFileDate").val("");
+                    $("#txtDescription").val("");
+
+                    var files = '', byteData, fileId = response.data;
+                    var tot = readerArr.length, i = 0;
+                    for (; i < tot; i++) {
+                        byteData = readerArr[i].file.result;
+                        if (byteData != null) {
+                            byteData = byteData.split(';')[1].replace("base64,", "");
+
+                            /* Save files */
+                            $.ajax({
+                                url: '/FileManager/SaveFile',
+                                type: 'POST',
+                                data: {
+                                    file: byteData,
+                                    filename: readerArr[i].filename,
+                                    fileId: fileId
+                                },
+                                success: function (response) {
+                                    if (response.status == "Success") {
+
+                                    }
+                                    else {
+                                        funToastr(false, 'File save: ' + response.error);
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    funToastr(false, 'File save: ' + xhr.responseText);
+                                }
+                            });
+                            /* Save files */
+                            $('#divfiles').html("");
+                        }
+                    }
+                }
+                else {
+                    funToastr(false, response.error);
+                }
+                readerArr = [];
+                count = 1;
+                StopProcess();
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        GetFileCategory();
+
+        $('#btnSave').on('click', function () {
+            var Isvalid = $("#frm").valid();
+            if (!Isvalid) {
+                Isvalid = false;
+                return;
+            }
+            SaveData();
+        });
+    });
+</script>

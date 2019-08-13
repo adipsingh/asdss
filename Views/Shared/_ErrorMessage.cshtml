@@ -1,0 +1,35 @@
+﻿
+@if (!string.IsNullOrEmpty(Convert.ToString(TempData["SuccessMessage"])))
+{
+    <div class="alert alert-success">
+        <strong>Success!</strong> @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Convert.ToString(TempData["ErrorMessage"])))
+{
+    <div class="alert alert-info">
+        <strong>Info!</strong> @TempData["ErrorMessage"]
+    </div>
+}
+@if (!string.IsNullOrEmpty(Convert.ToString(TempData["WarningMessage"])))
+{
+    <div class="alert alert-warning">
+        <strong>Warning!</strong> @TempData["WarningMessage"]
+    </div>
+}
+@if (!string.IsNullOrEmpty(Convert.ToString(TempData["DangerMessage"])))
+{
+    <div class="alert alert-danger">
+        <strong>Danger!</strong> @TempData["DangerMessage"]
+    </div>
+}
+
+<script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".alert-success, .alert-warning, .alert-info, .alert-danger").fadeTo(2000, 1000).slideUp(1000, function () {
+            $(".alert-success, .alert-warning, .alert-info, .alert-danger").slideUp(1000);
+        });
+    });
+</script>

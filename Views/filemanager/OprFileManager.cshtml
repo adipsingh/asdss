@@ -1,0 +1,247 @@
+﻿@model FRSS.Models.fileManagerAdd
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+                @using (Html.BeginForm("OprFileManager", "filemanager", FormMethod.Post, new { @data_parsley_validate = "", @enctype = "multipart/form-data" }))
+                {
+                    @*@Html.HiddenFor(p => p.fileid)
+
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            @if (!string.IsNullOrEmpty(Model.fileid) && Convert.ToInt64(Model.fileid) > 0)
+                            {
+                                <h3 class="box-title" id="headertext">Edit File Manager</h3>
+                            }
+                            else
+                            {*@
+                                <h3 class="box-title" id="headertext">Add File Manager </h3>
+                            @*}
+                        </div>
+                    </div>*@
+
+                    <div class="box-body">
+                        <div id="divUserGroupErrorMessage">
+                            @Html.Partial("~/Views/Shared/_ErrorMessage.cshtml")
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    @*<select class="form-control required" id="ddlcompany" onchange="GetCompany()"></select>*@
+                                    @Html.DropDownListFor(m => m.compid, new SelectList(ViewBag.CompanyList, "Value", "Text"), "  -----Select Company-----  ", new {@class="form-control required",  @onchange = "GetFinancialYear()" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Company Financial Year</label>
+
+                                    @*@Html.DropDownListFor(m => m.compfinid, new SelectList(ViewBag.FinYearList, "Value", "Text"), "  -----Select Company-----  ", new { @class = "form-control required" })*@
+                                    <select name="compfinid" class="form-control required" id="compfinid"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>File Category</label>
+                                    @*<select class="form-control required" id="ddlcompany" onchange="GetCompany()"></select>*@
+                                    @Html.DropDownListFor(m => m.filecatid, new SelectList(ViewBag.CategoryList, "Value", "Text"), "  -----Select File Category-----  ", new {@class="form-control required", @onchange = "GetFileSubCategory()" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>File Sub Category</label>
+                                    @*@Html.DropDownListFor(m => m.filesubcatid, new SelectList(ViewBag.SubCategoryList, "Value", "Text"), "  -----Select File Category-----  ", new { @class = "form-control required", @onchange = "GetFileSubCategory()" })*@
+                                    <select name="filesubcatid" class="form-control required" id="filesubcatid"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>File Title</label>
+                                    @Html.TextBoxFor(p => p.filetitle, new { @class = "form-control DisableEnableControl", @placeholder = "File Title" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>File Upload Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text"
+                                               class="form-control pull-right"
+                                               autocomplete="off"
+                                               name="uploadeddate" id="uploadeddate" value="@Model.uploadeddate"
+                                               placeholder="Date"
+                                               data-parsley-required=""
+                                               data-parsley-required-message="Date is required"
+                                               data-parsley-errors-container="#divDateErrorMessage">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>File Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text"
+                                               class="form-control pull-right"
+                                               autocomplete="off"
+                                               name="filedate" id="filedate" value="@Model.filedate"
+                                               placeholder="Date"
+                                               data-parsley-required=""
+                                               data-parsley-required-message="Date is required"
+                                               data-parsley-errors-container="#divDateErrorMessage">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea cols="5" rows="4" name="appremarks" class="form-control">@Model.filedescr</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <img alt="" src="@ViewBag.Base64String" style="height:100px;width:100px;" />
+                                    <input type="file" name="fileimage" id="fileimage" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2 btn-padding-right">
+                                <input type="submit" class="btn btn-block btn-info" value="Save" />
+                            </div>
+                            <div class="col-md-2 btn-padding-right">
+                                <a href="@Url.Action("ViewFileManagerList", "filemanager")" class="btn btn-block btn-danger">Cancel</a>
+                            </div>
+                            <div class="col-md-8">
+                                &nbsp;
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $('#example1').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': true,
+            'info': false,
+            'autoWidth': false
+        });
+
+        $('#uploadeddate').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            setDate: new Date()
+        });
+
+        $('#filedate').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            setDate: new Date()
+        });
+
+        $(".sidebar-menu li").removeClass('active');
+        $("#litransaction").addClass("active");
+        $("#lifileupdate").addClass("active");
+        debugger
+        var compid = $('#compid').val();
+        if (compid != "" && compid != null) {
+            GetFinancialYear();
+        }
+        var filecatid = $('#filecatid').val();
+        if (filecatid != "" && filecatid != null) {
+            GetFileSubCategory();
+        }
+
+
+    })
+
+    function GetFinancialYear() {
+        $.ajax({
+            url: '/filemanager/GetJsonCompFinYear',
+            type: 'GET',
+            data: {
+                id: $('#compid').val()
+            },
+            success: function (response) {
+                debugger
+                $("#compfinid").empty();
+                if (response.length >0) {
+                    $.each(response, function (index, value) {
+                        $("#compfinid").append("<option value='" + value.Value + "'>" + value.Text + "</option>");
+                    });
+                }
+                else {
+                    funToastr(false, response);
+                }
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+
+    function GetFileSubCategory() {
+        $.ajax({
+            url: '/filemanager/GetFileSubCategory',
+            type: 'GET',
+            data: {
+                catid: $('#filecatid').val()
+            },
+            success: function (response) {
+                $("#filesubcatid").empty();
+                if (response.status == "Success") {
+                    $.each(response.data, function (index, value) {
+                        $("#filesubcatid").append("<option value='" + value.subcatid + "'>" + value.subcatname + "</option>");
+                    });
+                }
+                else {
+                    funToastr(false, response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                funToastr(false, xhr.responseText);
+            }
+        });
+    }
+</script>
+

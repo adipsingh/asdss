@@ -1,0 +1,138 @@
+﻿@using Business
+@using FRSS.Utility
+@model IEnumerable<FRSS.Models.compmastermodel>
+@{
+    ViewBag.Title = "ViewCompList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+        background-color: #008d4c;
+        color: white;
+    }
+
+    .dropdown-menu > li > a {
+        color: white;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Company Master
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+                <div class="box-header">
+                    @Html.Partial("~/Views/Shared/_ErrorMessage.cshtml")
+                    <div class="col-md-8">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-2 btn-padding-right">
+                        @if (ProjectSession.addrights == true)
+                        {
+                            <a href="@(Url.Action("formcompmaster", "compmaster"))" class="btn btn-block btn-info"><i class="fa fa-plus"></i> Add </a>
+                        }
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-bordered table-striped" id="example1">
+                        <thread>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compcode)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compname)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compcity)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compstate)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compmobile1)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compemail)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.compweb)
+                                </td>
+                                <td>Action</td>
+                            </tr>
+                        </thread>
+
+                        @foreach (compmaster item in (List<compmaster>)ViewBag.CompList)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compcode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compcity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compstate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compmobile1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compemail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.compweb)
+                                </td>
+                                <td>
+                                    @if (ProjectSession.editrights == true)
+                                    {
+                                        <a href="~/compmaster/formcompmaster?id=@item.compid" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                                    }
+                                </td>
+                            </tr>
+
+                        }
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<!-- /.modal -->
+<script>
+    $(function () {
+        $('#example1').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': true,
+            'info': false,
+            'autoWidth': false
+        });
+
+        $(".sidebar-menu li").removeClass('active');
+        $("#limaster").addClass("active");
+        $("#licompmaster").addClass("active");
+    })
+</script>
+
+

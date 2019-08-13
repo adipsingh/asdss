@@ -1,0 +1,89 @@
+﻿@using Business
+@using FRSS.Utility
+@{
+    ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("AdminDashboard", "Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-12">
+            @Html.Partial("~/Views/Shared/_ErrorMessage.cshtml")
+        </div>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@ViewBag.totaldocs</h3>
+                    <p>Total Uploaded Documents</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <a href="#" class="small-box-footer">More Info  <i class="fa fa-arrow-circle-right"></i></a>
+                @*<a href="@Url.Action("PatientList", "OPD")" class="small-box-footer">More info<i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@ViewBag.totainctaxdoc</h3>
+                    <p>Total Income Tax Documents</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <a href="#" class="small-box-footer">More Info  <i class="fa fa-arrow-circle-right"></i></a>
+                @*<a href="@Url.Action("Appointment", "OPD")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>@ViewBag.totagstdoc</h3>
+                    <p>Total GST Documents</p>
+                </div>
+                <div class="icon">
+                    <i class="fa  fa-money"></i>
+                </div>
+                <a href="#" class="small-box-footer">More Info  <i class="fa fa-arrow-circle-right"></i></a>
+                @*<a href="#" class="small-box-footer">More info<i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@ViewBag.tottaxauditdoc</h3>
+                    <p>Total Tax Audit Documents</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More Info  <i class="fa fa-arrow-circle-right"></i></a>
+                @*<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+
+</section>

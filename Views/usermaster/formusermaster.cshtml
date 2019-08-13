@@ -1,0 +1,232 @@
+﻿@model FRSS.Models.usermastermodel
+@using FRSS.Utility
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+        background-color: #008d4c;
+        color: white;
+    }
+
+    .dropdown-menu > li > a {
+        color: white;
+    }
+</style>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- /.box -->
+            <div class="box">
+                @using (Html.BeginForm("formusermaster", "usermaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(p => p.userid)
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+
+                            @if (!string.IsNullOrEmpty(Model.userid) && Convert.ToString(Model.userid) != "")
+                            {
+                                <h3 class="box-title" id="headertext">Edit User Master</h3>
+                            }
+                            else
+                            {
+                                <h3 class="box-title" id="headertext">Add User Master </h3>
+                            }
+                        </div>
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div id="divUserGroupErrorMessage">
+                                @if (ViewBag.Error != null)
+                                {
+                                    <h4 class="box-alert" style="color: red; margin-left: 10px;">@ViewBag.Error</h4>
+                                }
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("User Name")
+                                        @Html.TextBoxFor(m => m.username, new { @class = "form-control", @placeholder = "User Name", @required = "required" })
+
+                                        @Html.ValidationMessageFor(s => s.username, null, new { style = "color: red" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("User Password")
+                                        @Html.TextBoxFor(m => m.userpwd, new { @class = "form-control", @placeholder = "User Password", @required = "required" })
+
+                                        @Html.ValidationMessageFor(s => s.userpwd, null, new { style = "color: red" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Mobile No")
+                                        @Html.TextBoxFor(m => m.usermobile, new { @class = "form-control", @placeholder = "Mobile No", @required = "required" })
+
+                                        @Html.ValidationMessageFor(s => s.usermobile, null, new { style = "color: red" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Email Id")
+                                        @Html.TextBoxFor(m => m.useremail, new { @class = "form-control", @placeholder = "Email Id", @required = "required" })
+
+                                        @Html.ValidationMessageFor(s => s.useremail, null, new { style = "color: red" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Add Rights")
+                                        @Html.CheckBoxFor(s => s.addrightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Edit Rights")
+                                        @Html.CheckBoxFor(s => s.editrightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Delete Rights")
+                                        @Html.CheckBoxFor(s => s.deleterightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Download Rights")
+                                        @Html.CheckBoxFor(s => s.downloadrightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Upload Rights")
+                                        @Html.CheckBoxFor(s => s.uploadrightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Send Email Rights")
+                                        @Html.CheckBoxFor(s => s.sendmailrightsview)
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-2 btn-padding-right">
+                                        <input type="submit" class="btn btn-block btn-info " value="Save" />
+                                    </div>
+                                    <div class="col-md-2 btn-padding-right">
+                                        <a href="@Url.Action("UserViewList", "usermaster")" class="btn btn-block btn-danger">Cancel</a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(document).ready(function () {
+        $('#regdate').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            setDate: new Date()
+        });
+
+        $(".sidebar-menu li").removeClass('active');
+        $("#limaster").addClass("active");
+        $("#liusermaster").addClass("active");
+    })
+</script>
+

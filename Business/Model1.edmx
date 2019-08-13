@@ -1,0 +1,1446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mvcdemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="abcmmxyz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ijyskqop" Type="nvarchar(max)" />
+          <Property Name="padsrownr" Type="nvarchar(max)" />
+          <Property Name="sdgrexdtsgrg" Type="nvarchar(max)" />
+          <Property Name="rrggregdtgttd" Type="nvarchar(max)" />
+          <Property Name="ttdssdactubt" Type="nvarchar(max)" />
+          <Property Name="uvadfdnusetbt" Type="nvarchar(max)" />
+          <Property Name="vtggspnosg" Type="nvarchar(max)" />
+          <Property Name="hydfgshdnobb" Type="nvarchar(max)" />
+          <Property Name="fgewervrfkeysasf" Type="nvarchar(max)" />
+          <Property Name="agdfgcidrttr" Type="nvarchar(max)" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bankmicrcode">
+          <Key>
+            <PropertyRef Name="codeid" />
+          </Key>
+          <Property Name="codeid" Type="bigint" Nullable="false" />
+          <Property Name="bankname" Type="nvarchar" MaxLength="200" />
+          <Property Name="ifsccode" Type="nvarchar" MaxLength="100" />
+          <Property Name="micrcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="branchname" Type="nvarchar" MaxLength="200" />
+          <Property Name="bankaddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="compfinyear">
+          <Key>
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="compfinid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="compfinid1" Type="bigint" />
+          <Property Name="compid" Type="nvarchar" MaxLength="50" />
+          <Property Name="finyrstart" Type="nvarchar" MaxLength="10" />
+          <Property Name="finyrend" Type="nvarchar" MaxLength="10" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+          <Property Name="addedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="adddatetime" Type="datetime" />
+          <Property Name="editedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="editdatetime" Type="datetime" />
+          <Property Name="deletedflg" Type="bigint" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="deleteddatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="compmaster">
+          <Key>
+            <PropertyRef Name="compid" />
+          </Key>
+          <Property Name="compid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="compid1" Type="bigint" />
+          <Property Name="compcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="compname" Type="nvarchar" MaxLength="50" />
+          <Property Name="compaddr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="compaddr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="compaddr3" Type="nvarchar" MaxLength="100" />
+          <Property Name="compcity" Type="nvarchar" MaxLength="50" />
+          <Property Name="compzip" Type="bigint" />
+          <Property Name="compstate" Type="nvarchar" MaxLength="50" />
+          <Property Name="compcontry" Type="nvarchar" MaxLength="50" />
+          <Property Name="compstdcode" Type="bigint" />
+          <Property Name="compphone" Type="bigint" />
+          <Property Name="compmobile1" Type="bigint" />
+          <Property Name="compmobile2" Type="bigint" />
+          <Property Name="compweb" Type="nvarchar" MaxLength="50" />
+          <Property Name="compemail" Type="nvarchar" MaxLength="50" />
+          <Property Name="compstatecode" Type="bigint" />
+          <Property Name="compgstno" Type="nvarchar" MaxLength="50" />
+          <Property Name="comppanno" Type="nvarchar" MaxLength="50" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+          <Property Name="addedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="adddatetime" Type="datetime" />
+          <Property Name="editedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="editdatetime" Type="datetime" />
+          <Property Name="deletedflg" Type="bigint" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="deleteddatetime" Type="datetime" />
+          <Property Name="area" Type="nvarchar" MaxLength="50" />
+          <Property Name="tanno" Type="nvarchar" MaxLength="100" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="regno" Type="nvarchar" MaxLength="100" />
+          <Property Name="faxno" Type="bigint" />
+        </EntityType>
+        <EntityType Name="compuserrights">
+          <Key>
+            <PropertyRef Name="rightsid" />
+          </Key>
+          <Property Name="rightsid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rightsid1" Type="bigint" />
+          <Property Name="userid" Type="nvarchar" MaxLength="50" />
+          <Property Name="compid" Type="nvarchar" MaxLength="50" />
+          <Property Name="compaccess" Type="bit" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.dtviewdesc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="dtviewdesc">
+          <Property Name="dtviewname" Type="nvarchar" MaxLength="200" />
+          <Property Name="dtfieldname" Type="nvarchar" MaxLength="100" />
+          <Property Name="dtdesc" Type="nvarchar" MaxLength="200" />
+          <Property Name="flddatatype" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderno" Type="bigint" />
+        </EntityType>-->
+        <EntityType Name="emailsetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id1" Type="bigint" />
+          <Property Name="portalname" Type="nvarchar" MaxLength="100" />
+          <Property Name="smtpname" Type="nvarchar" MaxLength="100" />
+          <Property Name="enablessl" Type="nvarchar" MaxLength="100" />
+          <Property Name="portno" Type="bigint" />
+          <Property Name="emailid" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="filemanager">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fileid1" Type="bigint" />
+          <Property Name="filecode" Type="nvarchar" MaxLength="50" />
+          <Property Name="filecatid" Type="nvarchar" MaxLength="50" />
+          <Property Name="filesubcatid" Type="nvarchar" MaxLength="50" />
+          <Property Name="filetitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="filedate" Type="datetime" />
+          <Property Name="uploadeddate" Type="datetime" />
+          <Property Name="filedescr" Type="nvarchar(max)" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+          <Property Name="addedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="adddatetime" Type="datetime" />
+          <Property Name="editedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="editdatetime" Type="datetime" />
+          <Property Name="deletedflg" Type="bigint" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="deleteddatetime" Type="datetime" />
+          <Property Name="compid" Type="nvarchar" MaxLength="40" />
+          <Property Name="compfinid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="filemanagerdtl">
+          <Key>
+            <PropertyRef Name="filedtlid" />
+          </Key>
+          <Property Name="filedtlid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="filedtlid1" Type="bigint" />
+          <Property Name="fileid" Type="nvarchar" MaxLength="50" />
+          <Property Name="fileimage" Type="image" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+          <Property Name="addedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="adddatetime" Type="datetime" />
+          <Property Name="editedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="editdatetime" Type="datetime" />
+          <Property Name="deletedflg" Type="bigint" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="10" />
+          <Property Name="deleteddatetime" Type="datetime" />
+          <Property Name="filetype" Type="nvarchar" MaxLength="50" />
+          <Property Name="filename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mstchallandown">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="challanno" Type="nvarchar" MaxLength="100" />
+          <Property Name="filename" Type="nvarchar" MaxLength="100" />
+          <Property Name="fileimage" Type="image" />
+          <Property Name="filetype" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="mstcombo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="fieldname" Type="nvarchar" MaxLength="100" />
+          <Property Name="fieldvalue" Type="nvarchar" MaxLength="150" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mstfilecategory">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="bigint" Nullable="false" />
+          <Property Name="catname" Type="nvarchar" MaxLength="50" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="mstfilesubcategory">
+          <Key>
+            <PropertyRef Name="subcatid" />
+          </Key>
+          <Property Name="subcatid" Type="bigint" Nullable="false" />
+          <Property Name="catid" Type="bigint" />
+          <Property Name="storeindb" Type="bigint" />
+          <Property Name="subcatname" Type="nvarchar" MaxLength="50" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.SoftwareUpdateInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SoftwareUpdateInfo">
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileVersion" Type="nvarchar" MaxLength="255" />
+          <Property Name="VerDate" Type="datetime" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.SoftwareUpdateLog' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SoftwareUpdateLog">
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileVersion" Type="nvarchar" MaxLength="255" />
+          <Property Name="VerDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="OldVersion" Type="nvarchar" MaxLength="255" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>-->
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="bigint" Nullable="false" />
+          <Property Name="compcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="compname" Type="nvarchar" MaxLength="100" />
+          <Property Name="compaddr1" Type="nvarchar" MaxLength="150" />
+          <Property Name="compaddr2" Type="nvarchar" MaxLength="150" />
+          <Property Name="compaddr3" Type="nvarchar" MaxLength="150" />
+          <Property Name="compzip" Type="bigint" />
+          <Property Name="compcity" Type="nvarchar" MaxLength="100" />
+          <Property Name="compstate" Type="nvarchar" MaxLength="100" />
+          <Property Name="compstatecode" Type="bigint" />
+          <Property Name="compcontry" Type="nvarchar" MaxLength="50" />
+          <Property Name="compstdcode" Type="bigint" />
+          <Property Name="compphone" Type="bigint" />
+          <Property Name="compmobile1" Type="bigint" />
+          <Property Name="compmobile2" Type="bigint" />
+          <Property Name="compemail" Type="nvarchar" MaxLength="100" />
+          <Property Name="compweb" Type="nvarchar" MaxLength="100" />
+          <Property Name="compgstno" Type="nvarchar" MaxLength="20" />
+          <Property Name="comppanno" Type="nvarchar" MaxLength="20" />
+          <Property Name="compdruglicno" Type="nvarchar" MaxLength="20" />
+          <Property Name="compserialkey" Type="nvarchar" MaxLength="20" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="custid" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+          </Key>
+          <Property Name="userlogid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userlogid1" Type="bigint" />
+          <Property Name="logindate" Type="datetime" />
+          <Property Name="logindatetime" Type="datetime" />
+          <Property Name="logoutdatetime" Type="datetime" />
+          <Property Name="macid" Type="nvarchar" MaxLength="20" />
+          <Property Name="machinename" Type="nvarchar" MaxLength="20" />
+          <Property Name="activeflg" Type="bit" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="usermaster">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="userid1" Type="bigint" />
+          <Property Name="username" Type="nvarchar" MaxLength="10" />
+          <Property Name="userpwd" Type="nvarchar" MaxLength="10" />
+          <Property Name="usermobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="useremail" Type="nvarchar" MaxLength="50" />
+          <Property Name="userstatus" Type="nvarchar" MaxLength="10" />
+          <Property Name="syncflg" Type="bigint" />
+          <Property Name="macid" Type="nvarchar" MaxLength="40" />
+          <Property Name="lockuser" Type="nvarchar" MaxLength="2" />
+          <Property Name="addrights" Type="bit" />
+          <Property Name="editrights" Type="bit" />
+          <Property Name="deleterights" Type="bit" />
+          <Property Name="uploadrights" Type="bit" />
+          <Property Name="downloadrights" Type="bit" />
+          <Property Name="sendmailrights" Type="bit" />
+          <Property Name="custid" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.compfinyearlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="compfinyearlist">
+          <Key>
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="compfinid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="compcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="compname" Type="nvarchar" MaxLength="50" />
+          <Property Name="finyear" Type="nvarchar" MaxLength="21" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.compmasterlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="compmasterlist">
+          <Key>
+            <PropertyRef Name="compid" />
+          </Key>
+          <Property Name="compid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="compcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="compname" Type="nvarchar" MaxLength="50" />
+          <Property Name="compcity" Type="nvarchar" MaxLength="50" />
+          <Property Name="compstate" Type="nvarchar" MaxLength="50" />
+          <Property Name="compmobile1" Type="bigint" />
+          <Property Name="compemail" Type="nvarchar" MaxLength="50" />
+          <Property Name="compweb" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.filemanagercomplist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="filemanagercomplist">
+          <Key>
+            <PropertyRef Name="fileid" />
+            <PropertyRef Name="compid" />
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="fileid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="filecode" Type="nvarchar" MaxLength="50" />
+          <Property Name="filedate" Type="datetime" />
+          <Property Name="compname" Type="nvarchar" MaxLength="50" />
+          <Property Name="finyear" Type="nvarchar" MaxLength="21" />
+          <Property Name="filetitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="catname" Type="nvarchar" MaxLength="50" />
+          <Property Name="subcatname" Type="nvarchar" MaxLength="50" />
+          <Property Name="compid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="compfinid" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.filemanagerlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="filemanagerlist">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="filecode" Type="nvarchar" MaxLength="50" />
+          <Property Name="filedate" Type="datetime" />
+          <Property Name="filetitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="catname" Type="nvarchar" MaxLength="50" />
+          <Property Name="subcatname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.userinfolist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="userinfolist">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="bigint" Nullable="false" />
+          <Property Name="compcode" Type="nvarchar" MaxLength="20" />
+          <Property Name="compname" Type="nvarchar" MaxLength="100" />
+          <Property Name="compaddr1" Type="nvarchar" MaxLength="150" />
+          <Property Name="compaddr2" Type="nvarchar" MaxLength="150" />
+          <Property Name="compaddr3" Type="nvarchar" MaxLength="150" />
+          <Property Name="compcity" Type="nvarchar" MaxLength="100" />
+          <Property Name="compzip" Type="bigint" />
+          <Property Name="compstate" Type="nvarchar" MaxLength="100" />
+          <Property Name="compstatecode" Type="bigint" />
+          <Property Name="compcontry" Type="nvarchar" MaxLength="50" />
+          <Property Name="compstdcode" Type="bigint" />
+          <Property Name="compphone" Type="bigint" />
+          <Property Name="compmobile1" Type="bigint" />
+          <Property Name="compmobile2" Type="bigint" />
+          <Property Name="compemail" Type="nvarchar" MaxLength="100" />
+          <Property Name="compweb" Type="nvarchar" MaxLength="100" />
+          <Property Name="compgstno" Type="nvarchar" MaxLength="20" />
+          <Property Name="comppanno" Type="nvarchar" MaxLength="20" />
+          <Property Name="compdruglicno" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shashang_frss.dbo.usermasterlist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="usermasterlist">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="10" />
+          <Property Name="usermobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="useremail" Type="nvarchar" MaxLength="50" />
+          <Property Name="userstatus" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.viewgstfilecount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewgstfilecount">
+          <Property Name="compid" Type="nvarchar" MaxLength="40" />
+          <Property Name="total" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.viewinctaxfilecount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewinctaxfilecount">
+          <Property Name="compid" Type="nvarchar" MaxLength="40" />
+          <Property Name="total" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.viewtaxauditfilecount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewtaxauditfilecount">
+          <Property Name="compid" Type="nvarchar" MaxLength="40" />
+          <Property Name="total" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'shashang_frss.dbo.viewtotalfilecount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewtotalfilecount">
+          <Property Name="compid" Type="nvarchar" MaxLength="40" />
+          <Property Name="total" Type="int" />
+        </EntityType>-->
+        <Function Name="sp_savecompmaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="int" Mode="In" />
+          <Parameter Name="p_compid" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compcode" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compname" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compaddr1" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compaddr2" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compaddr3" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compcity" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compzip" Type="bigint" Mode="In" />
+          <Parameter Name="p_compstate" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compcontry" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compstdcode" Type="bigint" Mode="In" />
+          <Parameter Name="p_compphone" Type="bigint" Mode="In" />
+          <Parameter Name="p_compmobile1" Type="bigint" Mode="In" />
+          <Parameter Name="p_compmobile2" Type="bigint" Mode="In" />
+          <Parameter Name="p_compweb" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compemail" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_compstatecode" Type="bigint" Mode="In" />
+          <Parameter Name="p_compgstno" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_comppanno" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_custid" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_addedby" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_errorcode" Type="bigint" Mode="InOut" />
+          <Parameter Name="p_errormessage" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="p_respid" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="spl_getcompmasterlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_custid" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_errorcode" Type="int" Mode="InOut" />
+          <Parameter Name="p_errormessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="spl_getcompmasterlistbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_compid" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_custid" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_errorcode" Type="int" Mode="InOut" />
+          <Parameter Name="p_errormessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="mvcdemoModelStoreContainer">
+          <EntitySet Name="abcmmxyz" EntityType="Self.abcmmxyz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bankmicrcode" EntityType="Self.bankmicrcode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compfinyear" EntityType="Self.compfinyear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compmaster" EntityType="Self.compmaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compuserrights" EntityType="Self.compuserrights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emailsetting" EntityType="Self.emailsetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filemanager" EntityType="Self.filemanager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filemanagerdtl" EntityType="Self.filemanagerdtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstchallandown" EntityType="Self.mstchallandown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstcombo" EntityType="Self.mstcombo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstfilecategory" EntityType="Self.mstfilecategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mstfilesubcategory" EntityType="Self.mstfilesubcategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userlog" EntityType="Self.userlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usermaster" EntityType="Self.usermaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compfinyearlist" EntityType="Self.compfinyearlist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [compfinyearlist].[compfinid] AS [compfinid], 
+    [compfinyearlist].[compcode] AS [compcode], 
+    [compfinyearlist].[compname] AS [compname], 
+    [compfinyearlist].[finyear] AS [finyear]
+    FROM [dbo].[compfinyearlist] AS [compfinyearlist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="compmasterlist" EntityType="Self.compmasterlist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [compmasterlist].[compid] AS [compid], 
+    [compmasterlist].[compcode] AS [compcode], 
+    [compmasterlist].[compname] AS [compname], 
+    [compmasterlist].[compcity] AS [compcity], 
+    [compmasterlist].[compstate] AS [compstate], 
+    [compmasterlist].[compmobile1] AS [compmobile1], 
+    [compmasterlist].[compemail] AS [compemail], 
+    [compmasterlist].[compweb] AS [compweb]
+    FROM [dbo].[compmasterlist] AS [compmasterlist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="filemanagercomplist" EntityType="Self.filemanagercomplist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [filemanagercomplist].[fileid] AS [fileid], 
+    [filemanagercomplist].[filecode] AS [filecode], 
+    [filemanagercomplist].[filedate] AS [filedate], 
+    [filemanagercomplist].[compname] AS [compname], 
+    [filemanagercomplist].[finyear] AS [finyear], 
+    [filemanagercomplist].[filetitle] AS [filetitle], 
+    [filemanagercomplist].[catname] AS [catname], 
+    [filemanagercomplist].[subcatname] AS [subcatname], 
+    [filemanagercomplist].[compid] AS [compid], 
+    [filemanagercomplist].[compfinid] AS [compfinid]
+    FROM [dbo].[filemanagercomplist] AS [filemanagercomplist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="filemanagerlist" EntityType="Self.filemanagerlist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [filemanagerlist].[fileid] AS [fileid], 
+    [filemanagerlist].[filecode] AS [filecode], 
+    [filemanagerlist].[filedate] AS [filedate], 
+    [filemanagerlist].[filetitle] AS [filetitle], 
+    [filemanagerlist].[catname] AS [catname], 
+    [filemanagerlist].[subcatname] AS [subcatname]
+    FROM [dbo].[filemanagerlist] AS [filemanagerlist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="userinfolist" EntityType="Self.userinfolist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [userinfolist].[infoid] AS [infoid], 
+    [userinfolist].[compcode] AS [compcode], 
+    [userinfolist].[compname] AS [compname], 
+    [userinfolist].[compaddr1] AS [compaddr1], 
+    [userinfolist].[compaddr2] AS [compaddr2], 
+    [userinfolist].[compaddr3] AS [compaddr3], 
+    [userinfolist].[compcity] AS [compcity], 
+    [userinfolist].[compzip] AS [compzip], 
+    [userinfolist].[compstate] AS [compstate], 
+    [userinfolist].[compstatecode] AS [compstatecode], 
+    [userinfolist].[compcontry] AS [compcontry], 
+    [userinfolist].[compstdcode] AS [compstdcode], 
+    [userinfolist].[compphone] AS [compphone], 
+    [userinfolist].[compmobile1] AS [compmobile1], 
+    [userinfolist].[compmobile2] AS [compmobile2], 
+    [userinfolist].[compemail] AS [compemail], 
+    [userinfolist].[compweb] AS [compweb], 
+    [userinfolist].[compgstno] AS [compgstno], 
+    [userinfolist].[comppanno] AS [comppanno], 
+    [userinfolist].[compdruglicno] AS [compdruglicno]
+    FROM [dbo].[userinfolist] AS [userinfolist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="usermasterlist" EntityType="Self.usermasterlist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [usermasterlist].[userid] AS [userid], 
+    [usermasterlist].[username] AS [username], 
+    [usermasterlist].[usermobile] AS [usermobile], 
+    [usermasterlist].[useremail] AS [useremail], 
+    [usermasterlist].[userstatus] AS [userstatus]
+    FROM [dbo].[usermasterlist] AS [usermasterlist]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mvcdemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="frssdbEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_savecompmaster" ReturnType="Collection(mvcdemoModel.sp_savecompmaster_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="Int32" />
+            <Parameter Name="p_compid" Mode="In" Type="String" />
+            <Parameter Name="p_compcode" Mode="In" Type="String" />
+            <Parameter Name="p_compname" Mode="In" Type="String" />
+            <Parameter Name="p_compaddr1" Mode="In" Type="String" />
+            <Parameter Name="p_compaddr2" Mode="In" Type="String" />
+            <Parameter Name="p_compaddr3" Mode="In" Type="String" />
+            <Parameter Name="p_compcity" Mode="In" Type="String" />
+            <Parameter Name="p_compzip" Mode="In" Type="Int64" />
+            <Parameter Name="p_compstate" Mode="In" Type="String" />
+            <Parameter Name="p_compcontry" Mode="In" Type="String" />
+            <Parameter Name="p_compstdcode" Mode="In" Type="Int64" />
+            <Parameter Name="p_compphone" Mode="In" Type="Int64" />
+            <Parameter Name="p_compmobile1" Mode="In" Type="Int64" />
+            <Parameter Name="p_compmobile2" Mode="In" Type="Int64" />
+            <Parameter Name="p_compweb" Mode="In" Type="String" />
+            <Parameter Name="p_compemail" Mode="In" Type="String" />
+            <Parameter Name="p_compstatecode" Mode="In" Type="Int64" />
+            <Parameter Name="p_compgstno" Mode="In" Type="String" />
+            <Parameter Name="p_comppanno" Mode="In" Type="String" />
+            <Parameter Name="p_custid" Mode="In" Type="String" />
+            <Parameter Name="p_addedby" Mode="In" Type="String" />
+            <Parameter Name="p_errorcode" Mode="InOut" Type="Int64" />
+            <Parameter Name="p_errormessage" Mode="InOut" Type="String" />
+            <Parameter Name="p_respid" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spl_getcompmasterlist" ReturnType="Collection(mvcdemoModel.spl_getcompmasterlist_Result)">
+            <Parameter Name="p_custid" Mode="In" Type="String" />
+            <Parameter Name="p_errorcode" Mode="InOut" Type="Int32" />
+            <Parameter Name="p_errormessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spl_getcompmasterlistbyid" ReturnType="Collection(mvcdemoModel.spl_getcompmasterlistbyid_Result)">
+            <Parameter Name="p_compid" Mode="In" Type="String" />
+            <Parameter Name="p_custid" Mode="In" Type="String" />
+            <Parameter Name="p_errorcode" Mode="InOut" Type="Int32" />
+            <Parameter Name="p_errormessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="abcmmxyzs" EntityType="mvcdemoModel.abcmmxyz" />
+          <EntitySet Name="bankmicrcodes" EntityType="mvcdemoModel.bankmicrcode" />
+          <EntitySet Name="compfinyears" EntityType="mvcdemoModel.compfinyear" />
+          <EntitySet Name="compmasters" EntityType="mvcdemoModel.compmaster" />
+          <EntitySet Name="compuserrights" EntityType="mvcdemoModel.compuserright" />
+          <EntitySet Name="emailsettings" EntityType="mvcdemoModel.emailsetting" />
+          <EntitySet Name="filemanagers" EntityType="mvcdemoModel.filemanager" />
+          <EntitySet Name="filemanagerdtls" EntityType="mvcdemoModel.filemanagerdtl" />
+          <EntitySet Name="mstchallandowns" EntityType="mvcdemoModel.mstchallandown" />
+          <EntitySet Name="mstcomboes" EntityType="mvcdemoModel.mstcombo" />
+          <EntitySet Name="mstfilecategories" EntityType="mvcdemoModel.mstfilecategory" />
+          <EntitySet Name="mstfilesubcategories" EntityType="mvcdemoModel.mstfilesubcategory" />
+          <EntitySet Name="userinfoes" EntityType="mvcdemoModel.userinfo" />
+          <EntitySet Name="userlogs" EntityType="mvcdemoModel.userlog" />
+          <EntitySet Name="usermasters" EntityType="mvcdemoModel.usermaster" />
+          <EntitySet Name="compfinyearlists" EntityType="mvcdemoModel.compfinyearlist" />
+          <EntitySet Name="compmasterlists" EntityType="mvcdemoModel.compmasterlist" />
+          <EntitySet Name="filemanagercomplists" EntityType="mvcdemoModel.filemanagercomplist" />
+          <EntitySet Name="filemanagerlists" EntityType="mvcdemoModel.filemanagerlist" />
+          <EntitySet Name="userinfolists" EntityType="mvcdemoModel.userinfolist" />
+          <EntitySet Name="usermasterlists" EntityType="mvcdemoModel.usermasterlist" />
+          </EntityContainer>
+        <ComplexType Name="sp_savecompmaster_Result">
+          <Property Type="String" Name="respid" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="errorcode" Nullable="true" />
+          <Property Type="String" Name="errormessage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spl_getcompmasterlist_Result">
+          <Property Type="String" Name="compid" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compcode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compcity" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compstate" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compmobile1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compemail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compweb" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spl_getcompmasterlistbyid_Result">
+          <Property Type="String" Name="compid" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="compid1" Nullable="true" />
+          <Property Type="String" Name="compcode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compaddr1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compaddr2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compaddr3" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compcity" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="compzip" Nullable="true" />
+          <Property Type="String" Name="compstate" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compcontry" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="compstdcode" Nullable="true" />
+          <Property Type="Int64" Name="compphone" Nullable="true" />
+          <Property Type="Int64" Name="compmobile1" Nullable="true" />
+          <Property Type="Int64" Name="compmobile2" Nullable="true" />
+          <Property Type="String" Name="compweb" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="compemail" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="compstatecode" Nullable="true" />
+          <Property Type="String" Name="compgstno" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="comppanno" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="custid" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="tanno" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="regdate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="regno" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="faxno" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="abcmmxyz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ijyskqop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="padsrownr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sdgrexdtsgrg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rrggregdtgttd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ttdssdactubt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="uvadfdnusetbt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vtggspnosg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hydfgshdnobb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fgewervrfkeysasf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="agdfgcidrttr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="bankmicrcode">
+          <Key>
+            <PropertyRef Name="codeid" />
+          </Key>
+          <Property Name="codeid" Type="Int64" Nullable="false" />
+          <Property Name="bankname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ifsccode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="micrcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="branchname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="bankaddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="compfinyear">
+          <Key>
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="compfinid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compfinid1" Type="Int64" />
+          <Property Name="compid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="finyrstart" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="finyrend" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adddatetime" Type="DateTime" Precision="3" />
+          <Property Name="editedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="editdatetime" Type="DateTime" Precision="3" />
+          <Property Name="deletedflg" Type="Int64" />
+          <Property Name="deletedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="deleteddatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="compmaster">
+          <Key>
+            <PropertyRef Name="compid" />
+          </Key>
+          <Property Name="compid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compid1" Type="Int64" />
+          <Property Name="compcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compcity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compzip" Type="Int64" />
+          <Property Name="compstate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compcontry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compstdcode" Type="Int64" />
+          <Property Name="compphone" Type="Int64" />
+          <Property Name="compmobile1" Type="Int64" />
+          <Property Name="compmobile2" Type="Int64" />
+          <Property Name="compweb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compstatecode" Type="Int64" />
+          <Property Name="compgstno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="comppanno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adddatetime" Type="DateTime" Precision="3" />
+          <Property Name="editedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="editdatetime" Type="DateTime" Precision="3" />
+          <Property Name="deletedflg" Type="Int64" />
+          <Property Name="deletedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="deleteddatetime" Type="DateTime" Precision="3" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tanno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="regno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="faxno" Type="Int64" />
+        </EntityType>
+        <EntityType Name="compuserright">
+          <Key>
+            <PropertyRef Name="rightsid" />
+          </Key>
+          <Property Name="rightsid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rightsid1" Type="Int64" />
+          <Property Name="userid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compaccess" Type="Boolean" />
+          <Property Name="custid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="emailsetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id1" Type="Int64" />
+          <Property Name="portalname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="smtpname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="enablessl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="portno" Type="Int64" />
+          <Property Name="emailid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="filemanager">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fileid1" Type="Int64" />
+          <Property Name="filecode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filecatid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filesubcatid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filetitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="filedate" Type="DateTime" Precision="3" />
+          <Property Name="uploadeddate" Type="DateTime" Precision="3" />
+          <Property Name="filedescr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adddatetime" Type="DateTime" Precision="3" />
+          <Property Name="editedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="editdatetime" Type="DateTime" Precision="3" />
+          <Property Name="deletedflg" Type="Int64" />
+          <Property Name="deletedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="deleteddatetime" Type="DateTime" Precision="3" />
+          <Property Name="compid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="compfinid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="filemanagerdtl">
+          <Key>
+            <PropertyRef Name="filedtlid" />
+          </Key>
+          <Property Name="filedtlid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filedtlid1" Type="Int64" />
+          <Property Name="fileid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fileimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adddatetime" Type="DateTime" Precision="3" />
+          <Property Name="editedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="editdatetime" Type="DateTime" Precision="3" />
+          <Property Name="deletedflg" Type="Int64" />
+          <Property Name="deletedby" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="deleteddatetime" Type="DateTime" Precision="3" />
+          <Property Name="filetype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mstchallandown">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="challanno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="filename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fileimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="filetype" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mstcombo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="fieldname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fieldvalue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="mstfilecategory">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="Int64" Nullable="false" />
+          <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="custid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mstfilesubcategory">
+          <Key>
+            <PropertyRef Name="subcatid" />
+          </Key>
+          <Property Name="subcatid" Type="Int64" Nullable="false" />
+          <Property Name="catid" Type="Int64" />
+          <Property Name="storeindb" Type="Int64" />
+          <Property Name="subcatname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="custid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="Int64" Nullable="false" />
+          <Property Name="compcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compzip" Type="Int64" />
+          <Property Name="compcity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compstate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compstatecode" Type="Int64" />
+          <Property Name="compcontry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compstdcode" Type="Int64" />
+          <Property Name="compphone" Type="Int64" />
+          <Property Name="compmobile1" Type="Int64" />
+          <Property Name="compmobile2" Type="Int64" />
+          <Property Name="compemail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compweb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compgstno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="comppanno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compdruglicno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compserialkey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+          </Key>
+          <Property Name="userlogid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userlogid1" Type="Int64" />
+          <Property Name="logindate" Type="DateTime" Precision="3" />
+          <Property Name="logindatetime" Type="DateTime" Precision="3" />
+          <Property Name="logoutdatetime" Type="DateTime" Precision="3" />
+          <Property Name="macid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="machinename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="activeflg" Type="Boolean" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="custid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="usermaster">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userid1" Type="Int64" />
+          <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="userpwd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="usermobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="syncflg" Type="Int64" />
+          <Property Name="macid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="lockuser" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="addrights" Type="Boolean" />
+          <Property Name="editrights" Type="Boolean" />
+          <Property Name="deleterights" Type="Boolean" />
+          <Property Name="uploadrights" Type="Boolean" />
+          <Property Name="downloadrights" Type="Boolean" />
+          <Property Name="sendmailrights" Type="Boolean" />
+          <Property Name="custid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="compfinyearlist">
+          <Key>
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="compfinid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="finyear" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="compmasterlist">
+          <Key>
+            <PropertyRef Name="compid" />
+          </Key>
+          <Property Name="compid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compcity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compstate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compmobile1" Type="Int64" />
+          <Property Name="compemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compweb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="filemanagercomplist">
+          <Key>
+            <PropertyRef Name="fileid" />
+            <PropertyRef Name="compid" />
+            <PropertyRef Name="compfinid" />
+          </Key>
+          <Property Name="fileid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filecode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filedate" Type="DateTime" Precision="3" />
+          <Property Name="compname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="finyear" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="filetitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subcatname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compfinid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="filemanagerlist">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filecode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="filedate" Type="DateTime" Precision="3" />
+          <Property Name="filetitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subcatname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="userinfolist">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="Int64" Nullable="false" />
+          <Property Name="compcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compaddr3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="compcity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compzip" Type="Int64" />
+          <Property Name="compstate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compstatecode" Type="Int64" />
+          <Property Name="compcontry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="compstdcode" Type="Int64" />
+          <Property Name="compphone" Type="Int64" />
+          <Property Name="compmobile1" Type="Int64" />
+          <Property Name="compmobile2" Type="Int64" />
+          <Property Name="compemail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compweb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="compgstno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="comppanno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="compdruglicno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="usermasterlist">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="usermobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mvcdemoModelStoreContainer" CdmEntityContainer="frssdbEntities" >
+          <FunctionImportMapping FunctionImportName="sp_savecompmaster" FunctionName="mvcdemoModel.Store.sp_savecompmaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mvcdemoModel.sp_savecompmaster_Result">
+                <ScalarProperty Name="respid" ColumnName="respid" />
+                <ScalarProperty Name="errorcode" ColumnName="errorcode" />
+                <ScalarProperty Name="errormessage" ColumnName="errormessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spl_getcompmasterlist" FunctionName="mvcdemoModel.Store.spl_getcompmasterlist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mvcdemoModel.spl_getcompmasterlist_Result">
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spl_getcompmasterlistbyid" FunctionName="mvcdemoModel.Store.spl_getcompmasterlistbyid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="mvcdemoModel.spl_getcompmasterlistbyid_Result">
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="compid1" ColumnName="compid1" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compaddr1" ColumnName="compaddr1" />
+                <ScalarProperty Name="compaddr2" ColumnName="compaddr2" />
+                <ScalarProperty Name="compaddr3" ColumnName="compaddr3" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compzip" ColumnName="compzip" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compcontry" ColumnName="compcontry" />
+                <ScalarProperty Name="compstdcode" ColumnName="compstdcode" />
+                <ScalarProperty Name="compphone" ColumnName="compphone" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compmobile2" ColumnName="compmobile2" />
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compstatecode" ColumnName="compstatecode" />
+                <ScalarProperty Name="compgstno" ColumnName="compgstno" />
+                <ScalarProperty Name="comppanno" ColumnName="comppanno" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="tanno" ColumnName="tanno" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="regno" ColumnName="regno" />
+                <ScalarProperty Name="faxno" ColumnName="faxno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="abcmmxyzs">
+            <EntityTypeMapping TypeName="mvcdemoModel.abcmmxyz">
+              <MappingFragment StoreEntitySet="abcmmxyz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="agdfgcidrttr" ColumnName="agdfgcidrttr" />
+                <ScalarProperty Name="fgewervrfkeysasf" ColumnName="fgewervrfkeysasf" />
+                <ScalarProperty Name="hydfgshdnobb" ColumnName="hydfgshdnobb" />
+                <ScalarProperty Name="vtggspnosg" ColumnName="vtggspnosg" />
+                <ScalarProperty Name="uvadfdnusetbt" ColumnName="uvadfdnusetbt" />
+                <ScalarProperty Name="ttdssdactubt" ColumnName="ttdssdactubt" />
+                <ScalarProperty Name="rrggregdtgttd" ColumnName="rrggregdtgttd" />
+                <ScalarProperty Name="sdgrexdtsgrg" ColumnName="sdgrexdtsgrg" />
+                <ScalarProperty Name="padsrownr" ColumnName="padsrownr" />
+                <ScalarProperty Name="ijyskqop" ColumnName="ijyskqop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bankmicrcodes">
+            <EntityTypeMapping TypeName="mvcdemoModel.bankmicrcode">
+              <MappingFragment StoreEntitySet="bankmicrcode">
+                <ScalarProperty Name="bankaddress" ColumnName="bankaddress" />
+                <ScalarProperty Name="branchname" ColumnName="branchname" />
+                <ScalarProperty Name="micrcode" ColumnName="micrcode" />
+                <ScalarProperty Name="ifsccode" ColumnName="ifsccode" />
+                <ScalarProperty Name="bankname" ColumnName="bankname" />
+                <ScalarProperty Name="codeid" ColumnName="codeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compfinyears">
+            <EntityTypeMapping TypeName="mvcdemoModel.compfinyear">
+              <MappingFragment StoreEntitySet="compfinyear">
+                <ScalarProperty Name="deleteddatetime" ColumnName="deleteddatetime" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="deletedflg" ColumnName="deletedflg" />
+                <ScalarProperty Name="editdatetime" ColumnName="editdatetime" />
+                <ScalarProperty Name="editedby" ColumnName="editedby" />
+                <ScalarProperty Name="adddatetime" ColumnName="adddatetime" />
+                <ScalarProperty Name="addedby" ColumnName="addedby" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="finyrend" ColumnName="finyrend" />
+                <ScalarProperty Name="finyrstart" ColumnName="finyrstart" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="compfinid1" ColumnName="compfinid1" />
+                <ScalarProperty Name="compfinid" ColumnName="compfinid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compmasters">
+            <EntityTypeMapping TypeName="mvcdemoModel.compmaster">
+              <MappingFragment StoreEntitySet="compmaster">
+                <ScalarProperty Name="faxno" ColumnName="faxno" />
+                <ScalarProperty Name="regno" ColumnName="regno" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="tanno" ColumnName="tanno" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="deleteddatetime" ColumnName="deleteddatetime" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="deletedflg" ColumnName="deletedflg" />
+                <ScalarProperty Name="editdatetime" ColumnName="editdatetime" />
+                <ScalarProperty Name="editedby" ColumnName="editedby" />
+                <ScalarProperty Name="adddatetime" ColumnName="adddatetime" />
+                <ScalarProperty Name="addedby" ColumnName="addedby" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="comppanno" ColumnName="comppanno" />
+                <ScalarProperty Name="compgstno" ColumnName="compgstno" />
+                <ScalarProperty Name="compstatecode" ColumnName="compstatecode" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+                <ScalarProperty Name="compmobile2" ColumnName="compmobile2" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compphone" ColumnName="compphone" />
+                <ScalarProperty Name="compstdcode" ColumnName="compstdcode" />
+                <ScalarProperty Name="compcontry" ColumnName="compcontry" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compzip" ColumnName="compzip" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compaddr3" ColumnName="compaddr3" />
+                <ScalarProperty Name="compaddr2" ColumnName="compaddr2" />
+                <ScalarProperty Name="compaddr1" ColumnName="compaddr1" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="compid1" ColumnName="compid1" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compuserrights">
+            <EntityTypeMapping TypeName="mvcdemoModel.compuserright">
+              <MappingFragment StoreEntitySet="compuserrights">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="compaccess" ColumnName="compaccess" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="rightsid1" ColumnName="rightsid1" />
+                <ScalarProperty Name="rightsid" ColumnName="rightsid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emailsettings">
+            <EntityTypeMapping TypeName="mvcdemoModel.emailsetting">
+              <MappingFragment StoreEntitySet="emailsetting">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="portno" ColumnName="portno" />
+                <ScalarProperty Name="enablessl" ColumnName="enablessl" />
+                <ScalarProperty Name="smtpname" ColumnName="smtpname" />
+                <ScalarProperty Name="portalname" ColumnName="portalname" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filemanagers">
+            <EntityTypeMapping TypeName="mvcdemoModel.filemanager">
+              <MappingFragment StoreEntitySet="filemanager">
+                <ScalarProperty Name="compfinid" ColumnName="compfinid" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="deleteddatetime" ColumnName="deleteddatetime" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="deletedflg" ColumnName="deletedflg" />
+                <ScalarProperty Name="editdatetime" ColumnName="editdatetime" />
+                <ScalarProperty Name="editedby" ColumnName="editedby" />
+                <ScalarProperty Name="adddatetime" ColumnName="adddatetime" />
+                <ScalarProperty Name="addedby" ColumnName="addedby" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="filedescr" ColumnName="filedescr" />
+                <ScalarProperty Name="uploadeddate" ColumnName="uploadeddate" />
+                <ScalarProperty Name="filedate" ColumnName="filedate" />
+                <ScalarProperty Name="filetitle" ColumnName="filetitle" />
+                <ScalarProperty Name="filesubcatid" ColumnName="filesubcatid" />
+                <ScalarProperty Name="filecatid" ColumnName="filecatid" />
+                <ScalarProperty Name="filecode" ColumnName="filecode" />
+                <ScalarProperty Name="fileid1" ColumnName="fileid1" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filemanagerdtls">
+            <EntityTypeMapping TypeName="mvcdemoModel.filemanagerdtl">
+              <MappingFragment StoreEntitySet="filemanagerdtl">
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="deleteddatetime" ColumnName="deleteddatetime" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="deletedflg" ColumnName="deletedflg" />
+                <ScalarProperty Name="editdatetime" ColumnName="editdatetime" />
+                <ScalarProperty Name="editedby" ColumnName="editedby" />
+                <ScalarProperty Name="adddatetime" ColumnName="adddatetime" />
+                <ScalarProperty Name="addedby" ColumnName="addedby" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="fileimage" ColumnName="fileimage" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+                <ScalarProperty Name="filedtlid1" ColumnName="filedtlid1" />
+                <ScalarProperty Name="filedtlid" ColumnName="filedtlid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstchallandowns">
+            <EntityTypeMapping TypeName="mvcdemoModel.mstchallandown">
+              <MappingFragment StoreEntitySet="mstchallandown">
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="fileimage" ColumnName="fileimage" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="challanno" ColumnName="challanno" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstcomboes">
+            <EntityTypeMapping TypeName="mvcdemoModel.mstcombo">
+              <MappingFragment StoreEntitySet="mstcombo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fieldvalue" ColumnName="fieldvalue" />
+                <ScalarProperty Name="fieldname" ColumnName="fieldname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstfilecategories">
+            <EntityTypeMapping TypeName="mvcdemoModel.mstfilecategory">
+              <MappingFragment StoreEntitySet="mstfilecategory">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="catname" ColumnName="catname" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mstfilesubcategories">
+            <EntityTypeMapping TypeName="mvcdemoModel.mstfilesubcategory">
+              <MappingFragment StoreEntitySet="mstfilesubcategory">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="subcatname" ColumnName="subcatname" />
+                <ScalarProperty Name="storeindb" ColumnName="storeindb" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="subcatid" ColumnName="subcatid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userinfoes">
+            <EntityTypeMapping TypeName="mvcdemoModel.userinfo">
+              <MappingFragment StoreEntitySet="userinfo">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="compserialkey" ColumnName="compserialkey" />
+                <ScalarProperty Name="compdruglicno" ColumnName="compdruglicno" />
+                <ScalarProperty Name="comppanno" ColumnName="comppanno" />
+                <ScalarProperty Name="compgstno" ColumnName="compgstno" />
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compmobile2" ColumnName="compmobile2" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compphone" ColumnName="compphone" />
+                <ScalarProperty Name="compstdcode" ColumnName="compstdcode" />
+                <ScalarProperty Name="compcontry" ColumnName="compcontry" />
+                <ScalarProperty Name="compstatecode" ColumnName="compstatecode" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compzip" ColumnName="compzip" />
+                <ScalarProperty Name="compaddr3" ColumnName="compaddr3" />
+                <ScalarProperty Name="compaddr2" ColumnName="compaddr2" />
+                <ScalarProperty Name="compaddr1" ColumnName="compaddr1" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="infoid" ColumnName="infoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userlogs">
+            <EntityTypeMapping TypeName="mvcdemoModel.userlog">
+              <MappingFragment StoreEntitySet="userlog">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="activeflg" ColumnName="activeflg" />
+                <ScalarProperty Name="machinename" ColumnName="machinename" />
+                <ScalarProperty Name="macid" ColumnName="macid" />
+                <ScalarProperty Name="logoutdatetime" ColumnName="logoutdatetime" />
+                <ScalarProperty Name="logindatetime" ColumnName="logindatetime" />
+                <ScalarProperty Name="logindate" ColumnName="logindate" />
+                <ScalarProperty Name="userlogid1" ColumnName="userlogid1" />
+                <ScalarProperty Name="userlogid" ColumnName="userlogid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usermasters">
+            <EntityTypeMapping TypeName="mvcdemoModel.usermaster">
+              <MappingFragment StoreEntitySet="usermaster">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="sendmailrights" ColumnName="sendmailrights" />
+                <ScalarProperty Name="downloadrights" ColumnName="downloadrights" />
+                <ScalarProperty Name="uploadrights" ColumnName="uploadrights" />
+                <ScalarProperty Name="deleterights" ColumnName="deleterights" />
+                <ScalarProperty Name="editrights" ColumnName="editrights" />
+                <ScalarProperty Name="addrights" ColumnName="addrights" />
+                <ScalarProperty Name="lockuser" ColumnName="lockuser" />
+                <ScalarProperty Name="macid" ColumnName="macid" />
+                <ScalarProperty Name="syncflg" ColumnName="syncflg" />
+                <ScalarProperty Name="userstatus" ColumnName="userstatus" />
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="usermobile" ColumnName="usermobile" />
+                <ScalarProperty Name="userpwd" ColumnName="userpwd" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid1" ColumnName="userid1" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compfinyearlists">
+            <EntityTypeMapping TypeName="mvcdemoModel.compfinyearlist">
+              <MappingFragment StoreEntitySet="compfinyearlist">
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="compfinid" ColumnName="compfinid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compmasterlists">
+            <EntityTypeMapping TypeName="mvcdemoModel.compmasterlist">
+              <MappingFragment StoreEntitySet="compmasterlist">
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filemanagercomplists">
+            <EntityTypeMapping TypeName="mvcdemoModel.filemanagercomplist">
+              <MappingFragment StoreEntitySet="filemanagercomplist">
+                <ScalarProperty Name="compfinid" ColumnName="compfinid" />
+                <ScalarProperty Name="compid" ColumnName="compid" />
+                <ScalarProperty Name="subcatname" ColumnName="subcatname" />
+                <ScalarProperty Name="catname" ColumnName="catname" />
+                <ScalarProperty Name="filetitle" ColumnName="filetitle" />
+                <ScalarProperty Name="finyear" ColumnName="finyear" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="filedate" ColumnName="filedate" />
+                <ScalarProperty Name="filecode" ColumnName="filecode" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filemanagerlists">
+            <EntityTypeMapping TypeName="mvcdemoModel.filemanagerlist">
+              <MappingFragment StoreEntitySet="filemanagerlist">
+                <ScalarProperty Name="subcatname" ColumnName="subcatname" />
+                <ScalarProperty Name="catname" ColumnName="catname" />
+                <ScalarProperty Name="filetitle" ColumnName="filetitle" />
+                <ScalarProperty Name="filedate" ColumnName="filedate" />
+                <ScalarProperty Name="filecode" ColumnName="filecode" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userinfolists">
+            <EntityTypeMapping TypeName="mvcdemoModel.userinfolist">
+              <MappingFragment StoreEntitySet="userinfolist">
+                <ScalarProperty Name="compdruglicno" ColumnName="compdruglicno" />
+                <ScalarProperty Name="comppanno" ColumnName="comppanno" />
+                <ScalarProperty Name="compgstno" ColumnName="compgstno" />
+                <ScalarProperty Name="compweb" ColumnName="compweb" />
+                <ScalarProperty Name="compemail" ColumnName="compemail" />
+                <ScalarProperty Name="compmobile2" ColumnName="compmobile2" />
+                <ScalarProperty Name="compmobile1" ColumnName="compmobile1" />
+                <ScalarProperty Name="compphone" ColumnName="compphone" />
+                <ScalarProperty Name="compstdcode" ColumnName="compstdcode" />
+                <ScalarProperty Name="compcontry" ColumnName="compcontry" />
+                <ScalarProperty Name="compstatecode" ColumnName="compstatecode" />
+                <ScalarProperty Name="compstate" ColumnName="compstate" />
+                <ScalarProperty Name="compzip" ColumnName="compzip" />
+                <ScalarProperty Name="compcity" ColumnName="compcity" />
+                <ScalarProperty Name="compaddr3" ColumnName="compaddr3" />
+                <ScalarProperty Name="compaddr2" ColumnName="compaddr2" />
+                <ScalarProperty Name="compaddr1" ColumnName="compaddr1" />
+                <ScalarProperty Name="compname" ColumnName="compname" />
+                <ScalarProperty Name="compcode" ColumnName="compcode" />
+                <ScalarProperty Name="infoid" ColumnName="infoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usermasterlists">
+            <EntityTypeMapping TypeName="mvcdemoModel.usermasterlist">
+              <MappingFragment StoreEntitySet="usermasterlist">
+                <ScalarProperty Name="userstatus" ColumnName="userstatus" />
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="usermobile" ColumnName="usermobile" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
