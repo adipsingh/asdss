@@ -100,6 +100,66 @@ namespace Business
             return data;
         }
 
+        public long GetLastFileId()
+        {
+            long lastFieldId = 0;
+            string value = string.Empty;
+            using (frssdbEntities entities = new frssdbEntities())
+            {
+                filemanager lastRecord = entities.filemanagers.OrderByDescending(fm => fm.fileid1).FirstOrDefault();
+                
+                if (lastRecord != null)
+                {
+                    lastFieldId = lastRecord.fileid1.Value;
+                }
+               
+            }
+            return lastFieldId;
+        }
+
+        public void UpdateFile(filemanager record)
+        {
+            frssdbEntities entities = new frssdbEntities();
+            var data = entities.Entry(record).State=System.Data.Entity.EntityState.Modified;
+            entities.SaveChanges();
+        }
+
+        public void AddFile(filemanager record)
+        {
+            frssdbEntities entities = new frssdbEntities();
+            var data = entities.filemanagers.Add(record);
+            entities.SaveChanges();
+        }
+
+        public long GetLastFiledtlId()
+        {
+            long lastFieldId = 0;
+            string value = string.Empty;
+            using (frssdbEntities entities = new frssdbEntities())
+            {
+                filemanagerdtl lastRecord = entities.filemanagerdtls.OrderByDescending(fm => fm.filedtlid1).FirstOrDefault();
+
+                if (lastRecord != null)
+                {
+                    lastFieldId = lastRecord.filedtlid1.Value;
+                }
+            }
+            return lastFieldId;
+        }
+
+        public void AddFiledtl(filemanagerdtl record)
+        {
+            frssdbEntities entities = new frssdbEntities();
+            var data = entities.filemanagerdtls.Add(record);
+            entities.SaveChanges();
+        }
+        public void UpdateFiledtl(filemanagerdtl record)
+        {
+            frssdbEntities entities = new frssdbEntities();
+            entities.Entry(record).State = System.Data.Entity.EntityState.Modified;
+            entities.SaveChanges();
+        }
+
     }
 }
  

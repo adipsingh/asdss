@@ -11,24 +11,30 @@
             <div class="box">
                 @using (Html.BeginForm("OprFileManager", "filemanager", FormMethod.Post, new { @data_parsley_validate = "", @enctype = "multipart/form-data" }))
                 {
-                    @*@Html.HiddenFor(p => p.fileid)
 
+                    @Html.HiddenFor(p => p.fileid)
+                    @Html.HiddenFor(p => p.fileid1)
+                    @Html.HiddenFor(p => p.filedtlid)
+                    @Html.HiddenFor(p => p.filedtlid1)
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            @if (!string.IsNullOrEmpty(Model.fileid) && Convert.ToInt64(Model.fileid) > 0)
+                            @if (!string.IsNullOrEmpty(Model.fileid))
                             {
                                 <h3 class="box-title" id="headertext">Edit File Manager</h3>
                             }
                             else
-                            {*@
+                            {
                                 <h3 class="box-title" id="headertext">Add File Manager </h3>
-                            @*}
+                            }
                         </div>
-                    </div>*@
+                    </div>
 
                     <div class="box-body">
                         <div id="divUserGroupErrorMessage">
                             @Html.Partial("~/Views/Shared/_ErrorMessage.cshtml")
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="row">
@@ -36,7 +42,7 @@
                                 <div class="form-group">
                                     <label>Company Name</label>
                                     @*<select class="form-control required" id="ddlcompany" onchange="GetCompany()"></select>*@
-                                    @Html.DropDownListFor(m => m.compid, new SelectList(ViewBag.CompanyList, "Value", "Text"), "  -----Select Company-----  ", new {@class="form-control required",  @onchange = "GetFinancialYear()" })
+                                    @Html.DropDownListFor(m => m.compid, new SelectList(ViewBag.CompanyList, "Value", "Text"), "  -----Select Company-----  ", new { @class = "form-control required", @onchange = "GetFinancialYear()" })
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -59,7 +65,7 @@
                                 <div class="form-group">
                                     <label>File Category</label>
                                     @*<select class="form-control required" id="ddlcompany" onchange="GetCompany()"></select>*@
-                                    @Html.DropDownListFor(m => m.filecatid, new SelectList(ViewBag.CategoryList, "Value", "Text"), "  -----Select File Category-----  ", new {@class="form-control required", @onchange = "GetFileSubCategory()" })
+                                    @Html.DropDownListFor(m => m.filecatid, new SelectList(ViewBag.CategoryList, "Value", "Text"), "  -----Select File Category-----  ", new { @class = "form-control required", @onchange = "GetFileSubCategory()" })
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -125,7 +131,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea cols="5" rows="4" name="appremarks" class="form-control">@Model.filedescr</textarea>
+                                    <textarea cols="5" rows="4" name="filedescr" id="filedescr" class="form-control">@Model.filedescr</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -205,7 +211,7 @@
             success: function (response) {
                 debugger
                 $("#compfinid").empty();
-                if (response.length >0) {
+                if (response.length > 0) {
                     $.each(response, function (index, value) {
                         $("#compfinid").append("<option value='" + value.Value + "'>" + value.Text + "</option>");
                     });

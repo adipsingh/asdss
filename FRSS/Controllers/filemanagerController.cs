@@ -4,6 +4,7 @@ using FRSS.Models;
 using FRSS.Utility;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -62,6 +63,7 @@ namespace FRSS.Controllers
                 var fileMData = filemanager.GetFileManagerById(id, ProjectSession.custid);
                 var fileDetails = filemanager.GetFileDetailsById(fileMData.fileid, ProjectSession.custid);
                 objmodel.fileid = fileMData.fileid;
+                objmodel.fileid1 = fileMData.fileid1.Value;
                 objmodel.compid = fileMData.compid;
                 objmodel.compfinid = fileMData.compfinid;
                 objmodel.filecatid = fileMData.filecatid;
@@ -74,6 +76,7 @@ namespace FRSS.Controllers
                 objmodel.fileimageSaved = fileDetails.fileimage;
                 objmodel.filetype = fileDetails.filetype;
                 objmodel.filename = fileDetails.filename;
+                objmodel.filedtlid1 = fileDetails.filedtlid1.Value;
                 var imagetype = objmodel.filetype.Substring(1,objmodel.filetype.Length-1);
 
                 var companyList = companyMaster.compmastersListByCustId(ProjectSession.custid);
@@ -89,11 +92,98 @@ namespace FRSS.Controllers
         [HttpPost]
         public ActionResult OprFileManager(fileManagerAdd obj, HttpPostedFileBase fileimage)
         {
+            if (string.IsNullOrEmpty(obj.fileid)  )
+            {
+                if (!(fileimage != null && fileimage.ContentLength > 0))
+                {
+                    ModelState.AddModelError("fileImage", "Please Select Image");                    
+                }
+            }
             if (ModelState.IsValid)
             {
+                filemanager fm = new filemanager();
+                filemanagerdtl fldtl = new filemanagerdtl();
+                ManageFileManager filemanager = new ManageFileManager();
+                fm.filetitle = obj.filetitle;
+                fm.filecatid = obj.filecatid;
+                fm.filesubcatid = obj.filesubcatid;
+                fm.filedate = obj.filedate;
+                fm.uploadeddate = obj.uploadeddate;
+                fm.filedescr = obj.filedescr;
+                //fm.syncflg
+                fm.custid = ProjectSession.custid;
+                fm.addedby = "0";
+                fm.editedby = "0";
+                fm.adddatetime = DateTime.Now;
+                fm.editdatetime = DateTime.Now;
+                fm.compid = obj.compid;
+                fm.compfinid = obj.compfinid;
+
+                if (string.IsNullOrEmpty(obj.fileid))
+                {
+                    long fileId = filemanager.GetLastFileId() + 1;
+                    fm.fileid1 = fileId;
+                    fm.fileid = ProjectSession.custid + "-" + fileId.ToString("0000");
+                    fm.filecode = fileId.ToString();
+                    filemanager.AddFile(fm);
+                }
+                else {
+                    fm.fileid = obj.fileid;
+                    fm.fileid1 = obj.filedtlid1;                   
+                    fm.filecode = obj.fileid1.ToString();
+                    filemanager.UpdateFile(fm);
+                }
+               
+
+
+                if (fileimage != null && fileimage.ContentLength > 0)
+                {
+                    byte[] bytes;
+                    using (BinaryReader br = new BinaryReader(fileimage.InputStream))
+                    {
+                        bytes = br.ReadBytes(fileimage.ContentLength);
+                    }
+                    string ContentType = fileimage.ContentType;
+                    string typ = ContentType.Split('/')[1];
+                    fldtl.addedby = "0";
+                    fldtl.fileid = fm.fileid;
+                    fldtl.custid = ProjectSession.custid;
+                    fldtl.fileimage = bytes;
+                    fldtl.filetype = "." + typ;
+                    
+
+                    long filedtlId = 0;
+                    if (string.IsNullOrEmpty(obj.filedtlid))
+                    {
+                        filedtlId = filemanager.GetLastFiledtlId()+1;
+                        fldtl.filedtlid = ProjectSession.custid + "-" + filedtlId.ToString("0000");
+                        fldtl.filedtlid1 = filedtlId;                   
+                        fldtl.adddatetime = DateTime.Now;
+                        fldtl.filename = filedtlId + "." + typ;
+                        filemanager.AddFiledtl(fldtl);
+                    }
+                    else
+                    {                    
+                        fldtl.filedtlid = obj.filedtlid; ;
+                        fldtl.filedtlid1 = obj.filedtlid1;
+                        fldtl.filename = obj.filedtlid + "." + typ;
+                        filemanager.UpdateFiledtl(fldtl);
+                    }
+                    
+                    
+                }
+                return RedirectToAction("ViewFileManagerList");
 
             }
-            return null;
+            ManageCompMaster companyMaster = new ManageCompMaster();
+            ManageFileManager filemanager1 = new ManageFileManager();
+
+            var companyList = companyMaster.compmastersListByCustId(ProjectSession.custid);
+            ViewBag.CompanyList = new SelectList(companyList, "compid", "compname", obj.compid);
+
+            var categoryList = filemanager1.GetFileCategory();
+            ViewBag.CategoryList = new SelectList(categoryList, "catid", "catname", obj.filecatid);
+            return View(obj);
         }
 
 
